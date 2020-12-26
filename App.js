@@ -8,7 +8,7 @@ import AddItem from './pages/AddItem/AddItem';
 import Header from './components/Header/Header';
 
 const App = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState('');
   const [visible, setVisible] = useState(false);
 
   const seePage = () => {
@@ -16,13 +16,16 @@ const App = () => {
   };
 
   return (
-    <Container>
-      <Header />
-      <Info>{visible ? <AddItem list={list} setList={setList} /> : null}</Info>
-      <Press onPress={() => seePage()} title="+ Add new item">
-        <InfoText>+ Add new item</InfoText>
-      </Press>
-    </Container>
+    <UserContext.Provider value={{list, setList}}>
+      <Container>
+        <Header />
+        <Info>{visible ? <AddItem /> : null}</Info>
+        <OutputText>{list}</OutputText>
+        <Press onPress={() => seePage()} title="+ Add new item">
+          <InfoText>+ Add new item</InfoText>
+        </Press>
+      </Container>
+    </UserContext.Provider>
   );
 };
 
@@ -34,9 +37,8 @@ const Container = styled.View`
 `;
 
 const Info = styled.Text`
-  margin: auto;
-  color: red;
-  font-size: 22px;
+  top: 30px;
+  left: 100px;
 `;
 
 const Press = styled.TouchableOpacity`
@@ -47,6 +49,8 @@ const Press = styled.TouchableOpacity`
   border-radius: 7px;
   border: none;
   left: 40px;
+  top: 580px;
+  position: absolute;
 `;
 
 const InfoText = styled.Text`
@@ -58,4 +62,8 @@ const InfoText = styled.Text`
   font-weight: 900;
   color: #19191a;
   font-size: 18px;
+`;
+
+const OutputText = styled.Text`
+  color: #fff;
 `;
