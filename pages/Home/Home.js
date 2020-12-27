@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
@@ -24,12 +25,12 @@ const Home = () => {
     <Container>
       <Header />
       <Info>{visible ? <AddItem /> : null}</Info>
+      <OutputList
+        data={list}
+        renderItem={({item, index}) => <OutputText>{item.list}</OutputText>}
+        keyExtractor={(item, index) => index.toString()}
+      />
       <Press onPress={() => seePage()}>
-        <OutputList
-          data={list}
-          renderItem={({item, index}) => <OutputText>{item}</OutputText>}
-          keyExtractor={(item, index) => index.toString()}
-        />
         <InfoText>+ Add new item</InfoText>
       </Press>
     </Container>
@@ -66,16 +67,17 @@ const InfoText = styled.Text`
   align-items: center;
   text-align: center;
   font-weight: 900;
-  bottom: 13px;
+  top: 10px;
   color: #19191a;
   font-size: 18px;
 `;
 
-const OutputList = styled.FlatList``;
+const OutputList = styled.FlatList`
+  display: flex;
+  top: 20px;
+`;
 
 const OutputText = styled.Text`
   color: #fff;
-  font-size: 22px;
-  left: 50px;
-  bottom: 20px;
+  font-size: 16px;
 `;

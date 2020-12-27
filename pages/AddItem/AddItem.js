@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {useContext} from 'react';
+import {StyleSheet, Button} from 'react-native';
 import styled from 'styled-components/native';
 import {UserContext} from '../../Context';
 import {useHooks} from '../../useHooks/UseHooks';
@@ -26,15 +27,22 @@ const AddItem = () => {
         placeholder="What do you wanna buy?"
         placeholderTextColor={'white'}
       />
-      <AddButton onPress={() => addNewItem()}>
-        <ButtonInfo>Add</ButtonInfo>
-      </AddButton>
-      <ItemInput list={list} />
+      <Button
+      color="#ffd600"
+      title="Add"
+      style={styles.button}
+       onPress={() => addNewItem()} />
     </Container>
   );
 };
 
 export default AddItem;
+
+const styles = StyleSheet.create({
+  button: {
+    color:'red',
+  },
+})
 
 const Container = styled.View`
   top: 100px;
@@ -42,25 +50,21 @@ const Container = styled.View`
 
 const AddInput = styled.TextInput`
   color: #fff;
-  height: 40px;
+  height: 35px;
   background: #282829;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 3px;
   text-align: center;
-  border: 1px solid #ffd600;
+  border: 1px solid ;
+  margin-bottom:10px;
 `;
 
-const AddButton = styled.TouchableOpacity`
-  background: #ffd600;
-  height: 40px;
-  width: 50px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  left: 164px;
-  bottom: 40px;
-`;
+// const AddButton = styled.Button`
+//   background: #ffd600;
+//   height: 40px;
+//   width: 50px;
+//   border-top-right-radius: 5px;
+//   border-bottom-right-radius: 5px;
+//   left: 164px;
+//   bottom: 40px;
+// `;
 
-const ButtonInfo = styled.Text`
-  text-align: center;
-  margin-top: 10px;
-`;
