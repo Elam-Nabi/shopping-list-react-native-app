@@ -3,67 +3,16 @@ import {View, Text, StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
 
 import {UserContext} from './Context';
-import AddItem from './pages/AddItem/AddItem';
-
-import Header from './components/Header/Header';
+import Home from './pages/Home/Home';
 
 const App = () => {
   const [list, setList] = useState('');
-  const [visible, setVisible] = useState(false);
-
-  const seePage = () => {
-    setVisible(!visible);
-  };
 
   return (
     <UserContext.Provider value={{list, setList}}>
-      <Container>
-        <Header />
-        <Info>{visible ? <AddItem /> : null}</Info>
-        <OutputText>{list}</OutputText>
-        <Press onPress={() => seePage()} title="+ Add new item">
-          <InfoText>+ Add new item</InfoText>
-        </Press>
-      </Container>
+      <Home />
     </UserContext.Provider>
   );
 };
 
 export default App;
-
-const Container = styled.View`
-  background: #19191a;
-  height: 100%;
-`;
-
-const Info = styled.Text`
-  top: 30px;
-  left: 100px;
-`;
-
-const Press = styled.TouchableOpacity`
-  background: #ffd600;
-  width: 80%;
-  height: 50px;
-  bottom: 20px;
-  border-radius: 7px;
-  border: none;
-  left: 40px;
-  top: 580px;
-  position: absolute;
-`;
-
-const InfoText = styled.Text`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  top: 13px;
-  font-weight: 900;
-  color: #19191a;
-  font-size: 18px;
-`;
-
-const OutputText = styled.Text`
-  color: #fff;
-`;

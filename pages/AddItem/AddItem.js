@@ -2,13 +2,10 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components/native';
 import {UserContext} from '../../Context';
+import {useHooks} from '../../useHooks/UseHooks';
 
 const AddItem = () => {
-  const {list, setList} = useContext(UserContext);
-
-  const handleList = (e) => {
-    setList(e.target.value);
-  };
+  const {list, setList, handleList} = useHooks();
 
   const addNewItem = () => {
     const itemDetails = {
