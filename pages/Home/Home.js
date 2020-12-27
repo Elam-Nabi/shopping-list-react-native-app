@@ -3,8 +3,8 @@ import {View, Text, StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
 
 import AddItem from '../../pages/AddItem/AddItem';
-
 import Header from '../../components/Header/Header';
+
 import {useHooks} from '../../useHooks/UseHooks';
 
 const Home = () => {
@@ -24,8 +24,12 @@ const Home = () => {
     <Container>
       <Header />
       <Info>{visible ? <AddItem /> : null}</Info>
-      <OutputText>{list}</OutputText>
       <Press onPress={() => seePage()}>
+        <OutputList
+          data={list}
+          renderItem={({item, index}) => <OutputText>{item}</OutputText>}
+          keyExtractor={(item, index) => index.toString()}
+        />
         <InfoText>+ Add new item</InfoText>
       </Press>
     </Container>
@@ -61,14 +65,17 @@ const InfoText = styled.Text`
   justify-content: center;
   align-items: center;
   text-align: center;
-  top: 13px;
   font-weight: 900;
+  bottom: 13px;
   color: #19191a;
   font-size: 18px;
 `;
 
+const OutputList = styled.FlatList``;
+
 const OutputText = styled.Text`
   color: #fff;
-  text-align: center;
-  top: 50px;
+  font-size: 22px;
+  left: 50px;
+  bottom: 20px;
 `;

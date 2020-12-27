@@ -3,6 +3,7 @@ import React, {useContext} from 'react';
 import styled from 'styled-components/native';
 import {UserContext} from '../../Context';
 import {useHooks} from '../../useHooks/UseHooks';
+import ItemInput from '../../components/ItemInput/ItemInput';
 
 const AddItem = () => {
   const {list, setList} = useHooks();
@@ -12,7 +13,7 @@ const AddItem = () => {
       id: Math.floor((Math.random() * 1000) / 10),
       list,
     };
-    setList([...setList, itemDetails]);
+    setList([...list, itemDetails]);
   };
 
   return (
@@ -28,6 +29,7 @@ const AddItem = () => {
       <AddButton onPress={() => addNewItem()}>
         <ButtonInfo>Add</ButtonInfo>
       </AddButton>
+      <ItemInput list={list} />
     </Container>
   );
 };
