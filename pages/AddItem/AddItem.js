@@ -5,7 +5,7 @@ import {UserContext} from '../../Context';
 import {useHooks} from '../../useHooks/UseHooks';
 
 const AddItem = () => {
-  const {list, setList, handleList} = useHooks();
+  const {list, setList} = useHooks();
 
   const addNewItem = () => {
     const itemDetails = {
@@ -19,8 +19,9 @@ const AddItem = () => {
     <Container>
       <AddInput
         value={list}
-        onChange={handleList}
+        onChangeText={text => setList(text)}
         type="text"
+        label="Add items"
         placeholder="What do you wanna buy?"
         placeholderTextColor={'white'}
       />

@@ -69,4 +69,6 @@ const InfoText = styled.Text`
 
 const OutputText = styled.Text`
   color: #fff;
+  text-align: center;
+  top: 50px;
 `;
