@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 
 import AddItem from '../../pages/AddItem/AddItem';
 import Header from '../../components/Header/Header';
+import ItemList from '../../components/ItemList/ItemList';
 
 import {useHooks} from '../../useHooks/UseHooks';
 
@@ -27,8 +28,7 @@ const Home = () => {
       <Info>{visible ? <AddItem /> : null}</Info>
       <OutputList
         data={list}
-        renderItem={({item, index}) => <OutputText>{item.list}</OutputText>}
-        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => <ItemList item={item} />}
       />
       <Press onPress={() => seePage()}>
         <InfoText>+ Add new item</InfoText>

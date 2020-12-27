@@ -52,10 +52,11 @@ const AddInput = styled.TextInput`
   color: #fff;
   height: 35px;
   background: #282829;
-  border-radius: 3px;
+  border-radius: 2px;
   text-align: center;
-  border: 1px solid ;
+  border: 0.3px solid #ffd600;
   margin-bottom:10px;
+  width:200px;
 `;
 
 // const AddButton = styled.Button`
