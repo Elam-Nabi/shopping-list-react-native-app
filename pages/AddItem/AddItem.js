@@ -4,7 +4,7 @@ import {StyleSheet, Button} from 'react-native';
 import styled from 'styled-components/native';
 import {UserContext} from '../../Context';
 import {useHooks} from '../../useHooks/UseHooks';
-import ItemInput from '../../components/ItemInput/ItemInput';
+// import ItemInput from '../../components/ItemInput/ItemInput';
 
 const AddItem = () => {
   const {list, setList} = useHooks();

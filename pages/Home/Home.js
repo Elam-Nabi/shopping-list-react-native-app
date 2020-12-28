@@ -18,6 +18,13 @@ const Home = () => {
     setVisible(!visible);
   };
 
+  const removeItem = (id) => {
+    setList(prevList => {
+      return prevList.filter(item => item.id !== id)
+    })
+  }
+
+
   useEffect(() => {
     console.log(list);
   }, [list]);
@@ -28,7 +35,7 @@ const Home = () => {
       <Info>{visible ? <AddItem /> : null}</Info>
       <OutputList
         data={list}
-        renderItem={({item}) => <ItemList item={item} />}
+        renderItem={({item}) => <ItemList removeItem={removeItem} item={item} />}
       />
       <Press onPress={() => seePage()}>
         <InfoText>+ Add new item</InfoText>
